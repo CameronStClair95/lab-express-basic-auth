@@ -8,6 +8,7 @@ require('./db');
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
 const express = require('express');
+const path = require('path')
 
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
@@ -26,7 +27,9 @@ app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
 
 // 👇 Start handling routes here
 const index = require('./routes/index');
+const router = require('./routes/auth.routes')
 app.use('/', index);
+app.use('/', router)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
